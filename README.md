@@ -13,7 +13,7 @@ Para ejecutar la base de datos localmente, se tiene los siguientes requisitos:
 ### Procedimiento
 1. Crear una base de datos local en Neo4j Desktop e iniciarla (para más información, véase https://neo4j.com/docs/desktop-manual/current/operations/create-dbms/).
 2. Clonar el repositorio (`git clone https://github.com/TheSunFall/pesca_neo4j.git`) o descargar el código fuente
-2. En el archivo db/creardb.py, en la siguiente línea
+3. En el archivo db/creardb.py, en la siguiente línea
 
     `dv = GraphDatabase.driver("bolt://localhost:7687", auth=("neo4j", "12345678"))`
 
