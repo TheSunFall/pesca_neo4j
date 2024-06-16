@@ -1,7 +1,8 @@
 from db.setup import SetupDB
 
 if __name__ == "__main__":
-    setup = SetupDB("bolt://localhost:7687", "neo4j", "12345678")
+    passwd = input("Ingrese contraseña: ")
+    setup = SetupDB("bolt://localhost:7687", "neo4j", passwd=passwd)
     setup.aniadir_consumo(nombre="Harina de pescado", c_interno=36.8, exportaciones=1191.0, tipo="CHI")
     setup.aniadir_consumo(nombre="Enlatado", c_interno=65.3, exportaciones=19.6, tipo="CHD")
     setup.aniadir_consumo(nombre="Congelado", c_interno=117.3, exportaciones=528.1, tipo="CHD")
@@ -26,6 +27,9 @@ if __name__ == "__main__":
     setup.aniadir_especie(nombre="Langostino", desembarque=37351, consumos={"Congelado": 34012})
     # Puertos
     setup.aniadir_puerto(nombre="Chimbote", dpto="Áncash", desembarque=1251806,
+                         consumos={"Harina de pescado": 1130424, "Enlatado": 67032, "Congelado": 23622,
+                                   "Curado": 12664})
+    setup.aniadir_puerto(nombre="Maui", dpto="Áncash", desembarque=1251806,
                          consumos={"Harina de pescado": 1130424, "Enlatado": 67032, "Congelado": 23622,
                                    "Curado": 12664})
     setup.close()
