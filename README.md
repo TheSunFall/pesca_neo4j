@@ -2,12 +2,6 @@
 
 ## Descripción del proyecto
 
-Neo4j es una base de datos basada en grafos y relaciones. Ayudenme a meter floro pls
-
-# Estudio de la pesca en Perú utilizando Neo4j
-
-## Descripción del proyecto
-
 Neo4j es una base de datos basada en grafos, relaciones y propiedades los cuales almacena en nodos, lo que permite una mayor flexibilidad y eficiencia en el análisis de datos complejos. Utiliza un lenguaje de consulta llamado Cypher, similar a SQL pero optimizado para el uso de relaciones. 
 Entre sus ventajas se encuentran:
 - Escalabilidad.- Permite manejar grandes cantidades de datos y relaciones.
