@@ -1,7 +1,9 @@
 from db.setup import SetupDB
+from db.query import QueryDB
+
 
 if __name__ == "__main__":
-    url = input("Ingrese URL de la base de datos (empieza con bolt:// en local y neo4j:// o neo4j+s:// en AuraDB): ")
+    url = input("Ingrese URL de la base de datos (para AuraDB reemplazar \"neo4j+s://\" por \"neo4j+ssc://\"): ")
     usr = input("Ingrese nombre de usuario en la base de datos (normalmente será \"neo4j\"): ")
     passwd = input("Ingrese contraseña: ")
     setup = SetupDB(uri=url, user=usr, passwd=passwd)
