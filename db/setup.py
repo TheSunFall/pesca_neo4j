@@ -4,6 +4,7 @@ from neo4j import GraphDatabase
 class SetupDB:
     def __init__(self, uri, user, passwd):
         self.driver = GraphDatabase.driver(uri, auth=(user, passwd))
+        self.driver.verify_connectivity()
 
     def close(self):
         self.driver.close()
