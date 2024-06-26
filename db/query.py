@@ -18,15 +18,27 @@ class QueryDB:
             return "El archivo de consulta no se encontró."
         except IOError:
             return "Hubo un error al leer el archivo."
-        result, summary, keys = self.driver.execute_query(query_=query)
-        return result
+        records, summary, keys = self.driver.execute_query(query_=query)
+        return records
 
 
 def mostrar(data):
-    print(tabulate(data, headers='keys') + '\n')
+    if isinstance(data[0][1], list):
+        table = []
+        for record in data:
+            subtable = []
+            for d in record[1]:
+                llaves = list(d.keys())
+                subtable.append([d[llaves[1]], d[llaves[0]]])
+            table.append([record[0], tabulate(subtable, tablefmt='plain')])
+        print(tabulate(table, tablefmt="simple_grid",headers=res[0].keys()) + '\n')
+    else:
+        print(tabulate(data, headers="keys") + '\n')
 
 
 if __name__ == '__main__':
     db = QueryDB()
-    mostrar(db.query("queries/mayor_consumo_especie.cypher"))
-    mostrar(db.query("queries/desembarque_total_especie.cypher"))
+    res0 = db.query("queries/mayor_consumo_especie.cypher")
+    res = db.query("queries/producciones_departamento.cypher")
+    mostrar(res0)
+    mostrar(res)
