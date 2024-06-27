@@ -26,17 +26,7 @@ def mostrar(data):
     if isinstance(data[0][1], list):
         table = []
         for record in data:
-            subtable = []
-            e = list(record[1][0].values())
-            if isinstance(e[0], int):
-                for d in record[1]:
-                    llaves = list(d.keys())
-                    subtable.append([d[llaves[1]], d[llaves[0]]])
-            else:
-                for d in record[1]:
-                    llaves = list(d.keys())
-                    subtable.append([d[llaves[0]], d[llaves[1]]])
-            table.append([record[0], tabulate(subtable, tablefmt='plain')])
+            table.append([record[0], tabulate(record[1], tablefmt='plain')])
         print(tabulate(table, tablefmt="simple_grid", headers=data[0].keys()) + '\n')
     else:
         print(tabulate(data, tablefmt="simple_grid", headers="keys", numalign="right") + '\n')
@@ -47,6 +37,8 @@ if __name__ == '__main__':
     usr = input("Ingrese nombre de usuario en la base de datos (normalmente será \"neo4j\"): ")
     passwd = input("Ingrese contraseña: ")
     db = QueryDB(url, usr, passwd)
+    res1 = db.query("queries/mayor_consumo_especie.cypher")
     res2 = db.query("queries/producciones_departamento.cypher")
+    mostrar(res1)
     mostrar(res2)
     db.close()
