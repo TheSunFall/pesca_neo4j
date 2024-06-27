@@ -26,6 +26,8 @@ Para ejecutar la base de datos localmente, se tiene los siguientes requisitos:
 - Python 3.7 o superior. Se puede descargar desde el siguiente enlace: https://www.python.org/downloads/
 - Driver de Neo4j para Python instalado. Se puede instalar con el comando `pip install neo4j` (requiere Python instalado) 
 o si se usa el IDE PyCharm, se puede instalar desde la sección de "Python Packages" buscando la clave "neo4j".
+- Paquete `python-tabulate` para mostrar las consultas. Se puede instalar con el comando `pip install tabulate` (requiere Python instalado) 
+o si se usa el IDE PyCharm, se puede instalar desde la sección de "Python Packages" buscando la clave "tabulate".
 - (Opcional, para clonar el repositorio) Git. Se puede descargar desde el siguiente enlace: https://git-scm.com/downloads
 
 Adicionalmente, si no dispone de una instancia de AuraDB, necesitará una base de datos local en Neo4j Desktop.
