@@ -44,6 +44,8 @@ a través de GitHub.
 4. Ingresar los datos solicitados
    - En Neo4j Desktop (base de datos local) la URL y usuario normalmente serán `bolt://localhost:7687` y `neo4j` 
 respectivamente (puede verificar accediendo a Neo4j Browser y escribiendo `:server status`).
-   - Para AuraDB, utilize los datos en el archivo .txt descargado durante la creación.
+   - Para AuraDB, utilize los datos en el archivo .txt descargado durante la creación. En la URL, reemplaze `neo4j+s://`
+   por `neo4j+ssc://`, caso contrario obtendrá un error
 5. Una vez creada la base de datos, desde AuraDB o Neo4j Desktop, puede utilizar las consultas del proyecto ejecutando 
-el archivo query.py o puede realizar las suyas propias desde Neo4j Browser (ej.`MATCH (n1)-[r]->(n2) RETURN n1,r,n2`).
+el archivo query.py e introduciendo los mismos datos, o puede realizar las suyas propias desde Neo4j Browser 
+(ej.`MATCH (n1)-[r]->(n2) RETURN n1,r,n2`).

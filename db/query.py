@@ -3,8 +3,8 @@ from tabulate import tabulate
 
 
 class QueryDB:
-    def __init__(self):
-        self.driver = GraphDatabase.driver("bolt://localhost:7687", auth=("neo4j", "12345678"))
+    def __init__(self, uri, usr, passwd):
+        self.driver = GraphDatabase.driver(uri, auth=(usr, passwd))
         self.driver.verify_connectivity()
 
     def close(self):
@@ -27,18 +27,26 @@ def mostrar(data):
         table = []
         for record in data:
             subtable = []
-            for d in record[1]:
-                llaves = list(d.keys())
-                subtable.append([d[llaves[1]], d[llaves[0]]])
+            e = list(record[1][0].values())
+            if isinstance(e[0], int):
+                for d in record[1]:
+                    llaves = list(d.keys())
+                    subtable.append([d[llaves[1]], d[llaves[0]]])
+            else:
+                for d in record[1]:
+                    llaves = list(d.keys())
+                    subtable.append([d[llaves[0]], d[llaves[1]]])
             table.append([record[0], tabulate(subtable, tablefmt='plain')])
-        print(tabulate(table, tablefmt="simple_grid",headers=res[0].keys()) + '\n')
+        print(tabulate(table, tablefmt="simple_grid", headers=data[0].keys()) + '\n')
     else:
-        print(tabulate(data, headers="keys") + '\n')
+        print(tabulate(data, tablefmt="simple_grid", headers="keys", numalign="right") + '\n')
 
 
 if __name__ == '__main__':
-    db = QueryDB()
-    res0 = db.query("queries/mayor_consumo_especie.cypher")
-    res = db.query("queries/producciones_departamento.cypher")
-    mostrar(res0)
-    mostrar(res)
+    url = input("Ingrese URL de la base de datos (para AuraDB reemplazar \"neo4j+s://\" por \"neo4j+ssc://\"): ")
+    usr = input("Ingrese nombre de usuario en la base de datos (normalmente será \"neo4j\"): ")
+    passwd = input("Ingrese contraseña: ")
+    db = QueryDB(url, usr, passwd)
+    res2 = db.query("queries/producciones_departamento.cypher")
+    mostrar(res2)
+    db.close()

@@ -8,7 +8,8 @@ class SetupDB:
 
     def close(self):
         self.driver.close()
-        print("Configuración inicial terminada")
+        print("""Configuración inicial terminada
+        Ejecute el archivo query.py para realizar consultas""")
 
     def aniadir_especie(self, nombre, desembarque, consumos):
         self.driver.execute_query("MERGE(e:Especie {name:$nm,desembarque:$ds})", nm=nombre, ds=desembarque)
