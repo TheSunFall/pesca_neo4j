@@ -25,8 +25,9 @@ class SetupDB:
         self.driver.execute_query("MERGE (d:Departamento {name:$nm,val_agregado_bruto:$v})", nm=nombre, v=vab)
 
     def aniadir_puerto(self, nombre, dpto, desembarque, consumos):
-        self.driver.execute_query("""MATCH (d:Departamento) WHERE (d.name=$dp)
-                                  MERGE (p:Puerto {name:$nm,desembarque:$ds})-[:UBICACION]->(d)""", nm=nombre,
+        self.driver.execute_query("""MERGE (p:Puerto {name:$nm,desembarque:$ds}) WITH p
+        MATCH (d:Departamento) WHERE (d.name=$dp)
+                                  MERGE(p)-[:UBICACION]->(d)""", nm=nombre,
                                   ds=desembarque, dp=dpto)
         for key, value in consumos.items():
             self.driver.execute_query("""MATCH(p:Puerto) MATCH(c:Consumo) WHERE (p.name = $nm AND c.name = $consumo)

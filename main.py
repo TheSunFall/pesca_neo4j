@@ -104,7 +104,7 @@ if __name__ == "__main__":
                          consumos={"Fresco": 18125, "Enlatado": 1436, "Congelado": 122})
     setup.aniadir_puerto(nombre="Pucusana", dpto="Lima", desembarque=21298,
                          consumos={"Fresco": 1514, "Enlatado": 14, "Congelado": 55, "Curado": 19712})
-    setup.aniadir_puerto(nombre="Otros puertos-ubicaciones", dpto="N/A", desembarque=301934,
+    setup.aniadir_puerto(nombre="Otros puertos - ubicaciones", dpto="N/A", desembarque=301934,
                          consumos={"Harina de pescado": 799, "Fresco": 186156, "Enlatado": 6049, "Congelado": 77787,
                                    "Curado": 31144})
     setup.close()
