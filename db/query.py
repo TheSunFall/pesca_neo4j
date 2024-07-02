@@ -1,3 +1,4 @@
+
 from os import path
 
 from neo4j import GraphDatabase
@@ -33,14 +34,17 @@ if __name__ == '__main__':
     url = input("Ingrese URL de la base de datos (para AuraDB reemplazar \"neo4j+s://\" por \"neo4j+ssc://\"): ")
     usr = input("Ingrese nombre de usuario en la base de datos (normalmente será \"neo4j\"): ")
     passwd = input("Ingrese contraseña: ")
-
     db = QueryDB(url, usr, passwd)
     res1 = db.query("desembarque_total_especie.cypher")
     res2 = db.query("mayor_consumo_especie.cypher")
-    res3 = db.query("producciones_departamento.cypher")
-    res5 = db.query("pesca_vab.cypher")
+    res3 = db.query("consumo_lugar.cypher")
+    res4 = db.query("consumo_tipo.cypher")
+    res6 = db.query("pesca_vab.cypher")
+    res5 = db.query("producciones_departamento.cypher")
     mostrar(res1)
     mostrar(res2)
     mostrar(res3)
+    mostrar(res4)
     mostrar(res5)
+    mostrar(res6)
     db.close()

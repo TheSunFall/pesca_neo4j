@@ -1,0 +1,1 @@
+MATCH (c:Consumo) RETURN c.name AS Consumo, c.tipo AS `Tipo de Consumo`,c.venta_interna + c.exportacion AS `Venta (kiloton kt)`
